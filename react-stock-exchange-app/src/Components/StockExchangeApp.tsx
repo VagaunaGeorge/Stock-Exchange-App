@@ -1,17 +1,29 @@
-// StockExchangeApp.tsx
+// StockChartComponent.tsx
 import React, { useState } from "react";
+import { Typography } from "@mui/material";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../Layout/Header";
 import StockChart from "./StockChart/StockChart";
 
-const StockExchangeApp: React.FC = () => {
-  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+const StockExchangeComponent: React.FC = () => {
+  const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
+
+  const handleCompanySelect = (symbol: string) => {
+    setSelectedSymbol(symbol);
+  };
 
   return (
     <>
-      <Header onSelectCompany={(company) => setSelectedCompany(company)} />
-      {selectedCompany && <StockChart company={selectedCompany} />}
+      <Header onCompanySelect={handleCompanySelect} />
+      {selectedSymbol ? (
+        <StockChart symbol={selectedSymbol} />
+      ) : (
+        <Typography variant="h5" align="center" style={{ marginTop: "100px" }}>
+          Select a company to view the stock chart.
+        </Typography>
+      )}
     </>
   );
 };
 
-export default StockExchangeApp;
+export default StockExchangeComponent;
