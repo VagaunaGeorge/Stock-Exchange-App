@@ -26,6 +26,24 @@ export const getStockData = async (ticker: string) => {
       close: result.c,
     }));
   } catch (error) {
-    toast.error(`Error: Faild fetching stock data for ${ticker}`);
+    if (
+      axios.isAxiosError(error) &&
+      error.response &&
+      error.response.status === 429
+    ) {
+      toast.error(
+        `Error: Too many requests within a minute. Please try again later.`,
+        {
+          position: "bottom-right",
+          autoClose: 3000,
+        }
+      );
+    } else {
+      toast.error(`Error: Failed fetching stock data for ${ticker}`, {
+        position: "bottom-right",
+        autoClose: 3000,
+      });
+    }
+    return [];
   }
 };

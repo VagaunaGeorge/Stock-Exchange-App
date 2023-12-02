@@ -29,9 +29,9 @@ const StockChart: React.FC<StockChartProps> = ({ symbol }) => {
   }, [symbol]);
 
   return (
-    <Card style={{ marginTop: "50px" }}>
+    <Card style={{ margin: "50px" }} elevation={2}>
       <CardContent>
-        {stockData.length > 0 ? (
+        {stockData && stockData.length > 0 ? (
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={stockData}>
               <XAxis dataKey="date" />
