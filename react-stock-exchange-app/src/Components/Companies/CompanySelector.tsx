@@ -1,4 +1,3 @@
-// CompanySelector.tsx
 import React, { useState, useEffect } from "react";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,7 +13,7 @@ interface Company {
 
 interface CompanySelectorProps {
   onSelect: (symbol: string) => void;
-  selectedCompany: string; // Add selectedCompany prop
+  selectedCompany: string;
 }
 
 const StyledSelect = styled(Select)({
@@ -25,7 +24,7 @@ const StyledSelect = styled(Select)({
 
 const CompanySelector: React.FC<CompanySelectorProps> = ({
   onSelect,
-  selectedCompany, // Use the selectedCompany prop
+  selectedCompany,
 }) => {
   const [companies, setCompanies] = useState<Company[]>([]);
 
@@ -52,7 +51,7 @@ const CompanySelector: React.FC<CompanySelectorProps> = ({
       <InputLabel id="company-selector-label">Select Company</InputLabel>
       <StyledSelect
         label="Select Company"
-        value={selectedCompany} // Set the value to the selectedCompany prop
+        value={selectedCompany}
         onChange={handleChange}
       >
         {companies.map((company) => (

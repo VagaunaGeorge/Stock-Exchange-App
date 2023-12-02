@@ -1,6 +1,5 @@
-// StockChart.tsx
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, LinearProgress } from "@mui/material";
 import { getStockData } from "../../services/api";
 import {
   ResponsiveContainer,
@@ -46,9 +45,9 @@ const StockChart: React.FC<StockChartProps> = ({ symbol }) => {
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <Typography variant="h6" align="center">
-            Loading chart...
-          </Typography>
+          <Box sx={{ width: "100%" }}>
+            <LinearProgress />
+          </Box>
         )}
       </CardContent>
     </Card>

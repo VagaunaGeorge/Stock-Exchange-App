@@ -1,4 +1,3 @@
-// Header.tsx
 import React, { useState } from "react";
 import { AppBar, Box, Toolbar, Typography, styled } from "@mui/material";
 import CompanySelector from "../Components/Companies/CompanySelector";
@@ -8,8 +7,8 @@ interface HeaderProps {
 }
 
 const HeaderContainer = styled(AppBar)({
-  flexDirection: "row", // Arrange items in a row
-  justifyContent: "space-between", // Space between items
+  flexDirection: "row",
+  justifyContent: "space-between",
 });
 
 const Header: React.FC<HeaderProps> = ({ onCompanySelect }) => {
